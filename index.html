@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joshua Chinn — Social Media & Marketing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --surface: #F0F4FF;
+      --card: #FFFFFF;
+      --navy: #1B2D5A;
+      --navy-light: #E8EDF7;
+      --navy-border: rgba(27,45,90,0.16);
+      --teal: #0D8B6F;
+      --teal-light: #E6F5F1;
+      --teal-border: rgba(13,139,111,0.2);
+      --gold: #C47B0C;
+      --gold-bg: #FEF3E2;
+      --text: #111827;
+      --muted: #4B5563;
+      --border: #E5E9F2;
+      --shadow: 0 2px 16px rgba(27,45,90,0.07);
+      --radius: 14px;
+      --nav-h: 66px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5%;}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--navy);letter-spacing:-.01em;}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{font-size:.85rem;font-weight:500;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;transition:color .2s;}
+    .nav-links a:hover{color:var(--navy);}
+    .nav-cta{background:var(--navy);color:#fff;padding:.5rem 1.25rem;border-radius:100px;font-size:.83rem;font-weight:600;letter-spacing:.02em;transition:opacity .2s;}
+    .nav-cta:hover{opacity:.85;}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;align-items:center;padding:calc(var(--nav-h)+4rem) 5% 5rem;background:linear-gradient(150deg,#FFFFFF 0%,#EEF2FF 45%,#E6F5F1 100%);}
+    .hero-inner{max-width:1160px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:var(--teal-light);color:var(--teal);border:1px solid var(--teal-border);border-radius:100px;padding:.32rem .95rem;font-size:.77rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.4rem;}
+    .hero-eyebrow::before{content:'●';font-size:.55rem;}
+    .hero-name{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:700;line-height:1.06;color:var(--text);margin-bottom:.5rem;}
+    .hero-name em{font-style:italic;color:var(--navy);}
+    .hero-role{font-size:1.1rem;color:var(--muted);margin-bottom:1.4rem;min-height:1.8rem;}
+    #typed-role{color:var(--teal);font-weight:700;}
+    .hero-desc{font-size:1rem;color:var(--muted);max-width:480px;line-height:1.8;margin-bottom:2.2rem;}
+    .hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;}
+    .btn-primary{background:var(--navy);color:#fff;padding:.8rem 1.9rem;border-radius:100px;font-size:.9rem;font-weight:700;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(27,45,90,.25);}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(27,45,90,.35);}
+    .btn-secondary{border:1.5px solid var(--navy-border);color:var(--navy);padding:.8rem 1.9rem;border-radius:100px;font-size:.9rem;font-weight:700;background:var(--navy-light);transition:background .2s;}
+    .btn-secondary:hover{background:rgba(27,45,90,.1);}
+
+    /* Hero visual */
+    .hero-visual{display:flex;flex-direction:column;gap:1rem;}
+    .hero-card-main{border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(27,45,90,.14);aspect-ratio:16/10;}
+    .hero-card-main img{width:100%;height:100%;object-fit:cover;}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;}
+    .hero-stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;text-align:center;box-shadow:var(--shadow);}
+    .hero-stat-num{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--navy);}
+    .hero-stat-lbl{font-size:.7rem;color:var(--muted);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-top:.1rem;}
+
+    /* SECTIONS */
+    section{padding:5rem 5%;}
+    .section-inner{max-width:1160px;margin:0 auto;}
+    .section-eyebrow{display:inline-block;background:var(--navy-light);color:var(--navy);border:1px solid var(--navy-border);border-radius:100px;padding:.28rem .85rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem;}
+    .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:var(--text);margin-bottom:.7rem;line-height:1.15;}
+    .section-sub{font-size:.97rem;color:var(--muted);max-width:520px;line-height:1.75;}
+
+    /* FILTER */
+    .filter-bar{display:flex;gap:.55rem;flex-wrap:wrap;margin:2.2rem 0 1.8rem;}
+    .filter-btn{border:1.5px solid var(--border);background:var(--card);color:var(--muted);padding:.42rem 1.05rem;border-radius:100px;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
+    .filter-btn.active,.filter-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+    /* WORK GRID */
+    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+    .work-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;box-shadow:var(--shadow);}
+    .work-card:hover{transform:translateY(-5px);box-shadow:0 16px 44px rgba(27,45,90,.13);}
+    .work-card.wide{grid-column:span 2;}
+    .card-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--surface);}
+    .card-body{padding:1.3rem;}
+    .card-chips{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:.7rem;}
+    .chip{padding:.2rem .6rem;border-radius:100px;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;}
+    .chip-navy{background:var(--navy-light);color:var(--navy);}
+    .chip-teal{background:var(--teal-light);color:var(--teal);}
+    .chip-gold{background:var(--gold-bg);color:var(--gold);}
+    .card-title{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:.35rem;line-height:1.3;}
+    .card-desc{font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:.9rem;}
+    .card-cta{font-size:.78rem;font-weight:700;color:var(--teal);letter-spacing:.04em;text-transform:uppercase;}
+    .card-cta::after{content:' →';}
+
+    /* SKILLS */
+    #skills{background:var(--surface);}
+    .skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2.5rem;}
+    .skill-group{margin-bottom:1.5rem;}
+    .skill-group-label{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem;}
+    .skill-pills{display:flex;flex-wrap:wrap;gap:.5rem;}
+    .skill-pill{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:.55rem .9rem;font-size:.82rem;font-weight:600;color:var(--text);box-shadow:var(--shadow);}
+    .cert-list{display:flex;flex-direction:column;gap:.75rem;margin-top:.5rem;}
+    .cert-item{display:flex;align-items:flex-start;gap:.75rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.1rem;box-shadow:var(--shadow);}
+    .cert-icon{width:34px;height:34px;border-radius:8px;background:var(--navy-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.95rem;}
+    .cert-name{font-size:.88rem;font-weight:700;color:var(--text);}
+    .cert-issuer{font-size:.75rem;color:var(--muted);}
+
+    /* EXPERIENCE */
+    .exp-timeline{margin-top:2.2rem;display:flex;flex-direction:column;gap:1.3rem;}
+    .exp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow);position:relative;padding-left:1.8rem;}
+    .exp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px 0 0 4px;background:var(--navy);}
+    .exp-card.teal::before{background:var(--teal);}
+    .exp-card.gold::before{background:var(--gold);}
+    .exp-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.65rem;}
+    .exp-role{font-size:1.05rem;font-weight:700;color:var(--text);}
+    .exp-company{font-size:.88rem;font-weight:600;color:var(--navy);margin-top:.15rem;}
+    .exp-date{font-size:.75rem;color:var(--muted);background:var(--surface);padding:.25rem .7rem;border-radius:100px;border:1px solid var(--border);white-space:nowrap;}
+    .exp-body{font-size:.87rem;color:var(--muted);line-height:1.7;}
+    .exp-body ul{padding-left:1.1rem;margin-top:.4rem;}
+    .exp-body li{margin-bottom:.3rem;}
+
+    /* CONTACT */
+    #contact{background:var(--navy);color:#fff;}
+    #contact .section-eyebrow{background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.2);}
+    #contact .section-title{color:#fff;}
+    #contact .section-sub{color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 2.2rem;}
+    .contact-center{text-align:center;}
+    .contact-photo{width:160px;height:160px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid rgba(255,255,255,.3);box-shadow:0 8px 32px rgba(0,0,0,.35);margin:0 auto 2rem;display:block;}
+    .contact-links{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;}
+    .contact-link{display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:.85rem 1.5rem;font-size:.88rem;font-weight:600;color:#fff;transition:background .2s,transform .2s;}
+    .contact-link:hover{background:rgba(255,255,255,.15);transform:translateY(-2px);}
+    .contact-link svg{width:17px;height:17px;flex-shrink:0;}
+
+    /* MODAL */
+    .modal-overlay{position:fixed;inset:0;background:rgba(11,20,40,.8);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s;}
+    .modal-overlay.open{opacity:1;pointer-events:all;}
+    .modal-box{background:var(--card);border-radius:20px;max-width:820px;width:100%;max-height:91vh;overflow-y:auto;padding:2.2rem;position:relative;transform:translateY(18px);transition:transform .3s;box-shadow:0 40px 80px rgba(0,0,0,.28);}
+    .modal-overlay.open .modal-box{transform:translateY(0);}
+    .modal-close{position:absolute;top:1.1rem;right:1.1rem;width:34px;height:34px;border-radius:50%;background:var(--surface);border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--text);z-index:10;}
+    .modal-close:hover{background:var(--navy-light);}
+    .modal-thumb{width:100%;border-radius:var(--radius);margin-bottom:1.4rem;object-fit:cover;max-height:340px;display:block;}
+    .modal-chips{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:.85rem;}
+    .modal-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--text);margin-bottom:.9rem;line-height:1.2;}
+    .modal-section{margin-bottom:1.1rem;}
+    .modal-section h4{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:.35rem;}
+    .modal-section p{font-size:.92rem;color:var(--muted);line-height:1.75;}
+    .modal-links{margin-top:1.2rem;display:flex;flex-wrap:wrap;gap:.7rem;}
+    .modal-link-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--navy);color:#fff;padding:.55rem 1.1rem;border-radius:100px;font-size:.8rem;font-weight:700;transition:opacity .2s;}
+    .modal-link-btn:hover{opacity:.85;}
+    .modal-link-btn.outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy-border);}
+    .modal-link-btn.outline:hover{background:var(--navy-light);}
+
+    footer{background:#0B1428;color:rgba(255,255,255,.45);text-align:center;padding:2rem 5%;font-size:.82rem;}
+    footer a{color:rgba(255,255,255,.75);font-weight:600;}
+
+    @media(max-width:900px){
+      .hero-inner{grid-template-columns:1fr;}
+      .hero-visual{display:none;}
+      .work-grid{grid-template-columns:1fr 1fr;}
+      .work-card.wide{grid-column:span 2;}
+      .skills-layout{grid-template-columns:1fr;}
+    }
+    @media(max-width:600px){
+      .work-grid{grid-template-columns:1fr;}
+      .work-card.wide{grid-column:span 1;}
+      .nav-links{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Joshua Chinn</div>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <h1 class="hero-name">Joshua<br><em>Chinn</em></h1>
+      <p class="hero-role">Specializing in <span id="typed-role"></span></p>
+      <p class="hero-desc">Communications and PR graduate from SJSU, graduated Summa Cum Laude. I build social media strategies that move numbers, craft content that earns engagement, and tell brand stories people actually want to follow.</p>
+      <div class="hero-btns">
+        <a href="#work" class="btn-primary">See My Work</a>
+        <a href="mailto:joshcc66@gmail.com" class="btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-main">
+        <img src="https://cdn.myportfolio.com/d66cd572-97c1-4b88-b485-58ce4269f953/1734f4c6-1a19-4626-856c-e539820cb777_rwc_0x838x3024x2364x3024.jpg?h=294ea121c379a4478d5a0ef7d430ae52" alt="The Cats Restaurant social media work">
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">50K</div><div class="hero-stat-lbl">Reel Views</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">30%</div><div class="hero-stat-lbl">Engagement Lift</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">10+</div><div class="hero-stat-lbl">Campaigns Led</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-inner">
+    <span class="section-eyebrow">Portfolio</span>
+    <h2 class="section-title">Selected Work</h2>
+    <p class="section-sub">Social media campaigns, marketing strategy, email marketing, analytics, and PR work — built for real clients and real audiences.</p>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="social">Social Media</button>
+      <button class="filter-btn" data-filter="marketing">Marketing</button>
+      <button class="filter-btn" data-filter="pr">Public Relations</button>
+      <button class="filter-btn" data-filter="analytics">Analytics</button>
+    </div>
+
+    <div class="work-grid">
+
+      <!-- The Cats Social Videos — FEATURED WIDE -->
+      <div class="work-card wide" data-cat="social marketing" onclick="openModal('cats-videos')">
+        <img class="card-thumb" src="https://cdn.myportfolio.com/d66cd572-97c1-4b88-b485-58ce4269f953/97cafefc-b1d2-459e-8b6a-8ed72fa4bfe0_car_202x158.png?h=35eeaa5d7cbb674bc59900bd80a18fa7" alt="The Cats Social Media Videos">
+        <div class="card-body">
+          <div class="card-chips"><span class="chip chip-navy">Social Media</span><span class="chip chip-teal">Video Production</span><span class="chip chip-gold">50K Views</span></div>
+          <div class="card-title">The Cats Restaurant — Social Media Videos</div>
+          <p class="card-desc">Produced short-form Instagram Reels for The Cats Restaurant in Los Gatos — including a Grab-N-Go campaign video that hit 50K views. Covered menu launches, private party tours, and live festival appearances.</p>
+          <span class="card-cta">View Project</span>
+        </div>
+      </div>
+
+      <!-- The Cats Flyers -->
+      <div class="work-card" data-cat="social marketing" onclick="openModal('cats-flyers')">
+        <img class="card-thumb" src="https://cdn.myportfolio.com/d66cd572-97c1-4b88-b485-58ce4269f953/1734f4c6-1a19-4626-856c-e539820cb777_rwc_0x838x3024x2364x3024.jpg?h=294ea121c379a4478d5a0ef7d430ae52" alt="The Cats Social Media Flyers">
+        <div class="card-body">
+          <div class="card-chips"><span class="chip chip-navy">Social Media</span><span class="chip chip-teal">Graphic Design</span></div>
+          <div class="card-title">The Cats Restaurant — Social Media Flyers</div>
+          <p class="card-desc">Designed Instagram promotion flyers using Canva for events, seasonal menus, and specials — maintaining a consistent brand voice across the @thecatslosgatos account.</p>
+          <span class="card-cta">View Project</span>
+        </div>
+      </div>
+
+      <!-- The Cats Email -->
+      <div class="work-card" data-cat="marketing analytics" onclick="openModal('cats-email')">
+        <img class="card-thumb" src="https://cdn.myportfolio.com/d66cd572-97c1-4b88-b485-58ce4269f953/8ce46f06-b24b-4e47-96fc-91308026b7c8_rwc_0x361x1558x1218x1558.png?h=994b4c8be7ceb8ede68528b43686eb22" alt="The Cats Email Newsletters">
+        <div class="card-body">
+          <div class="card-chips"><span class="chip chip-navy">Email Marketing</span><span class="chip chip-teal">Mailchimp</span></div>
+          <div class="card-title">The Cats Restaurant — Email & SMS Marketing</div>
+          <p class="card-desc">Managed Mailchimp email and SMS campaigns for The Cats Restaurant, improving open and click-through rates. Designed newsletter layouts, wrote copy, and tracked performance.</p>
+          <span class="card-cta">View Project</span>
+        </div>
+      </div>
+
+      <!-- Marketing Plan & Analytics — FEATURED WIDE -->
+      <div class="work-card wide" data-cat="marketing analytics" onclick="openModal('marketing-plan')">
+        <img class="card-thumb" src="https://cdn.myportfolio.com/d66cd572-97c1-4b88-b485-58ce4269f953/5e53867c-a99c-40b7-99db-10b8af50f4b0_rwc_109x0x863x675x863.jpg?h=57876259460e0b34b554961890341d5c" alt="Marketing Plan and Analytics">
+        <div class="card-body">
+          <div class="card-chips"><span class="chip chip-navy">Marketing Strategy</span><span class="chip chip-teal">Analytics</span><span class="chip chip-gold">Talkwalker</span></div>
+          <div class="card-title">Marketing Plan, Competitive Analysis & Analytics</div>
+          <p class="card-desc">Built a full marketing campaign plan and competitor analysis for The Cats Restaurant, and produced a social media analytics report with actionable next steps. Also led a Talkwalker social listening analysis of the 2025 Oscars for Social Media Analytics class.</p>
+          <span class="card-cta">View Project</span>
+        </div>
+      </div>
+
+      <!-- SJSU Social Media Team -->
+      <div class="work-card" data-cat="social marketing" onclick="openModal('sjsu-team')">
+        <img class="card-thumb" src="https://cdn.myportfolio.com/d66cd572-97c1-4b88-b485-58ce4269f953/8ede191d-e205-49ce-8c52-c472fa609d97_car_202x158.png?h=a0a9bf14a20abc9627a1f9fb4cb5e3be" alt="SJSU COMM Social Media Team">
+        <div class="card-body">
+          <div class="card-chips"><span class="chip chip-navy">Team Lead</span><span class="chip chip-teal">Social Media</span><span class="chip chip-gold">10+ Campaigns</span></div>
+          <div class="card-title">SJSU COMM Dept. — Production Creative Team Lead</div>
+          <p class="card-desc">Led a 12-person production team managing graphics, video, podcasts, and accessibility across Instagram, Facebook, LinkedIn, YouTube, and TikTok. Oversaw 10+ campaigns and produced bi-weekly Mailchimp newsletters.</p>
+          <span class="card-cta">View Project</span>
+        </div>
+      </div>
+
+      <!-- PR Coursework -->
+      <div class="work-card" data-cat="pr" onclick="openModal('pr-work')">
+        <img class="card-thumb" src="https://cdn.myportfolio.com/d66cd572-97c1-4b88-b485-58ce4269f953/bf7e6a16-2752-4013-adcd-358bee69f5c8_rwc_211x0x1161x908x1161.png?h=822b93c1bd94b2cb32137e4eed9736f1" alt="Public Relations Coursework">
+        <div class="card-body">
+          <div class="card-chips"><span class="chip chip-navy">Public Relations</span><span class="chip chip-teal">Press Releases</span><span class="chip chip-gold">Capstone</span></div>
+          <div class="card-title">Public Relations Coursework & Capstone</div>
+          <p class="card-desc">Capstone mock PR agency pitch, crisis communication case studies (Domino's, NFL/concussions), news releases, and a research essay on AI in the PR profession — the full strategic PR toolkit.</p>
+          <span class="card-cta">View Project</span>
+        </div>
+      </div>
+
+      <!-- Gilroy Gardens -->
+      <div class="work-card" data-cat="social marketing" onclick="openModal('gilroy')">
+        <img class="card-thumb" src="https://cdn.myportfolio.com/d66cd572-97c1-4b88-b485-58ce4269f953/642b936e-5a5f-4458-b671-bcdf318dc7b1_rwc_58x0x681x533x681.jpg?h=972e797c9885ea8e07dc33da6d248385" alt="Gilroy Gardens Social Media">
+        <div class="card-body">
+          <div class="card-chips"><span class="chip chip-navy">Social Media</span><span class="chip chip-teal">TikTok · Reels</span></div>
+          <div class="card-title">Gilroy Gardens — Social Media</div>
+          <p class="card-desc">Created TikToks, Instagram Reels, and Facebook stories for Gilroy Gardens' summer season, increasing seasonal campaign reach and event attendance using Sprout Social for scheduling.</p>
+          <span class="card-cta">View Project</span>
+        </div>
+      </div>
+
+      <!-- Orchard Valley Church -->
+      <div class="work-card" data-cat="social" onclick="openModal('church')">
+        <img class="card-thumb" src="https://cdn.myportfolio.com/d66cd572-97c1-4b88-b485-58ce4269f953/f5d7c6b3-b440-4cbc-a3e0-3bd0617a489d_rwc_150x0x1745x1365x1745.jpg?h=3e95f7411db45303b64a18663ca4d1a6" alt="Orchard Valley Christian Church Social Media">
+        <div class="card-body">
+          <div class="card-chips"><span class="chip chip-navy">Social Media</span><span class="chip chip-teal">Built from Scratch</span></div>
+          <div class="card-title">Orchard Valley Christian Church — Instagram</div>
+          <p class="card-desc">Volunteered to build the church's Instagram presence from zero — designed all flyers in Canva and established the visual identity for their new social media channel @orchardvalleychurch.</p>
+          <span class="card-cta">View Project</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <span class="section-eyebrow">Skills & Tools</span>
+    <h2 class="section-title">What I Bring to the Table</h2>
+    <div class="skills-layout">
+      <div>
+        <div class="skill-group">
+          <div class="skill-group-label">Social Media Platforms</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Instagram</span><span class="skill-pill">TikTok</span><span class="skill-pill">Facebook</span><span class="skill-pill">LinkedIn</span><span class="skill-pill">YouTube</span><span class="skill-pill">Threads</span><span class="skill-pill">Snapchat</span><span class="skill-pill">Discord</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Marketing & Analytics Tools</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Sprout Social</span><span class="skill-pill">Mailchimp</span><span class="skill-pill">Talkwalker</span><span class="skill-pill">CrowdRiff (UGC)</span><span class="skill-pill">Google Analytics</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Creative Software</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Canva</span><span class="skill-pill">Adobe Photoshop</span><span class="skill-pill">Premiere Pro</span><span class="skill-pill">Final Cut Pro</span><span class="skill-pill">CapCut</span><span class="skill-pill">Adobe Audition</span><span class="skill-pill">iMovie</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Core Competencies</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Content Strategy</span><span class="skill-pill">Campaign Execution</span><span class="skill-pill">Community Management</span><span class="skill-pill">Trend Research</span><span class="skill-pill">Audience Targeting</span><span class="skill-pill">Press Releases</span><span class="skill-pill">Media Relations</span><span class="skill-pill">Crisis Communication</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label" style="margin-bottom:.9rem;">Certifications</div>
+        <div class="cert-list">
+          <div class="cert-item">
+            <div class="cert-icon">🎯</div>
+            <div><div class="cert-name">HubSpot Digital Advertising</div><div class="cert-issuer">HubSpot Academy</div></div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">📈</div>
+            <div><div class="cert-name">HubSpot Digital Marketing</div><div class="cert-issuer">HubSpot Academy</div></div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">📣</div>
+            <div><div class="cert-name">Top 10 Principles in Public Relations</div><div class="cert-issuer">Udemy</div></div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">💼</div>
+            <div><div class="cert-name">Public Relations Foundations</div><div class="cert-issuer">LinkedIn Learning</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <span class="section-eyebrow">Experience</span>
+    <h2 class="section-title">Where I've Worked</h2>
+    <p class="section-sub">From restaurant marketing to university social media teams to luxury retail — real roles, real results.</p>
+    <div class="exp-timeline">
+
+      <div class="exp-card">
+        <div class="exp-head">
+          <div>
+            <div class="exp-role">Retail Fragrances Sales Associate (Prada / YSL)</div>
+            <div class="exp-company">Macy's · Santa Clara, CA</div>
+          </div>
+          <div class="exp-date">Dec 2025 – Present</div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Serve as brand ambassador for Prada and YSL, translating product narratives into compelling customer stories to drive engagement and sales.</li>
+            <li>Support in-store product launches and promotional events, coordinating on-site logistics and ensuring consistent brand experiences aligned with luxury brand guidelines.</li>
+            <li>Maintain brand consistency across all customer touchpoints, reinforcing visual and messaging standards for two premium global brands.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card teal">
+        <div class="exp-head">
+          <div>
+            <div class="exp-role">Marketing Intern</div>
+            <div class="exp-company">The Cats Restaurant &amp; Bar (ChefCentury) · Los Gatos, CA</div>
+          </div>
+          <div class="exp-date">June 2024 – Dec 2024</div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Executed social media campaigns that boosted brand visibility and audience engagement by 30%.</li>
+            <li>Managed Mailchimp email and SMS marketing campaigns, improving open and click-through rates.</li>
+            <li>Designed social graphics and short-form videos for promotions and events — including a Reel that hit 50K views.</li>
+            <li>Represented the brand at a pop-up booth during the Los Gatos summer festival, increasing event foot traffic.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card teal">
+        <div class="exp-head">
+          <div>
+            <div class="exp-role">Social Media Team — Production Creative Team Lead</div>
+            <div class="exp-company">SJSU Communication Studies Department · San Jose, CA</div>
+          </div>
+          <div class="exp-date">Aug 2023 – May 2024</div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Managed three content teams and oversaw 10+ social media campaigns, ensuring timely delivery of all creative assets.</li>
+            <li>Led weekly strategy meetings to align production schedules and enhance brand consistency.</li>
+            <li>Integrated newsletter content into digital campaigns across Instagram, Facebook, LinkedIn, YouTube, and TikTok.</li>
+            <li>Designed and distributed bi-weekly newsletters via Mailchimp, adhering to department branding guidelines.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card gold">
+        <div class="exp-head">
+          <div>
+            <div class="exp-role">Social Media Marketing Assistant</div>
+            <div class="exp-company">Gilroy Gardens · Gilroy, CA</div>
+          </div>
+          <div class="exp-date">May 2022 – Aug 2022</div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Increased seasonal campaign reach with optimized content on TikTok, Instagram Reels, and Facebook.</li>
+            <li>Scheduled social posts using Sprout Social for family-focused event promotions, increasing event attendance.</li>
+            <li>Assisted with special event logistics during peak summer season, contributing to increased visitor numbers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-head">
+          <div>
+            <div class="exp-role">BA, Communication Studies · Minor in Public Relations</div>
+            <div class="exp-company">San Jose State University · San Jose, CA</div>
+          </div>
+          <div class="exp-date">May 2025 · Summa Cum Laude</div>
+        </div>
+        <div class="exp-body">
+          <p>Graduated Summa Cum Laude with President's Scholar honors. Coursework in Media Relations, Case Studies in PR, Social Media Analytics, and New Media/New Methods. Minor in Public Relations.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-center">
+      <img class="contact-photo" src="Josh Grad.jpg" alt="Joshua Chinn">
+      <span class="section-eyebrow">Let's Connect</span>
+      <h2 class="section-title">Ready to grow your brand?</h2>
+      <p class="section-sub">I'm actively looking for my first full-time role in social media management, marketing, or public relations. Let's talk about what I can bring to your team.</p>
+      <div class="contact-links">
+        <a href="mailto:joshcc66@gmail.com" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          joshcc66@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/joshua-chinn" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://joshuachinn.myportfolio.com/" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          Adobe Portfolio
+        </a>
+        <a href="tel:6692559667" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.61 5.07 2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 18z"/></svg>
+          (669) 255-9667
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Joshua Chinn · Social Media &amp; Marketing · San Jose, CA · <a href="mailto:joshcc66@gmail.com">joshcc66@gmail.com</a></p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <img class="modal-thumb" id="modal-thumb" src="" alt="">
+    <div class="modal-chips" id="modal-chips"></div>
+    <h2 class="modal-title" id="modal-title"></h2>
+    <div class="modal-section"><h4>Overview</h4><p id="modal-overview"></p></div>
+    <div class="modal-section"><h4>What I Did</h4><p id="modal-work"></p></div>
+    <div class="modal-section"><h4>Results</h4><p id="modal-results"></p></div>
+    <div class="modal-links" id="modal-links"></div>
+  </div>
+</div>
+
+<script>
+// Typed animation
+const roles = ['Social Media Management','Content Strategy','Marketing Campaigns','Public Relations','Email Marketing'];
+let ri=0,ci=0,deleting=false;
+const rt = document.getElementById('typed-role');
+function typeRole(){
+  const w=roles[ri];
+  if(deleting){rt.textContent=w.slice(0,--ci);if(ci===0){deleting=false;ri=(ri+1)%roles.length;setTimeout(typeRole,380);return;}}
+  else{rt.textContent=w.slice(0,++ci);if(ci===w.length){setTimeout(()=>{deleting=true;typeRole();},1900);return;}}
+  setTimeout(typeRole,deleting?50:80);
+}
+typeRole();
+
+// Filter
+document.querySelectorAll('.filter-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    const f=b.dataset.filter;
+    document.querySelectorAll('.work-card').forEach(c=>{
+      c.style.display=(f==='all'||c.dataset.cat.includes(f))?'':'none';
+    });
+  });
+});
+
+// Modal data
+const CDN='https://cdn.myportfolio.com/d66cd572-97c1-4b88-b485-58ce4269f953/';
+const modals={
+  'cats-videos':{
+    thumb:CDN+'97cafefc-b1d2-459e-8b6a-8ed72fa4bfe0_car_202x158.png?h=35eeaa5d7cbb674bc59900bd80a18fa7',
+    chips:['Social Media','Video Production','50K Views'],
+    title:'The Cats Restaurant — Social Media Videos',
+    overview:'As marketing intern for The Cats Restaurant & Bar in Los Gatos, I was responsible for capturing and editing video content for promotions, events, and menu features — all posted to @thecatslosgatos on Instagram.',
+    work:'Shot and edited short-form Instagram Reels using Final Cut Pro and CapCut. Created content for the Grab-N-Go campaign, a new Filipino and Hawaiian dine-in menu launch, a private party venue tour, a live private party event, and the Jazz in the Plazz summer festival in Los Gatos.',
+    results:'The Grab-N-Go Reel achieved 50,000 views — the highest-performing piece of content during my internship. Overall social media campaigns boosted brand visibility and audience engagement by 30% during the six-month internship.',
+    links:[
+      {label:'50K Views Reel — Grab-N-Go',href:'https://www.instagram.com/reel/C9qm6i7PBFl/'},
+      {label:'Filipino & Hawaiian Menu',href:'https://www.instagram.com/reel/C-AscnwxnQT/'},
+      {label:'Venue Tour Reel',href:'https://www.instagram.com/reel/DAAGSMIPRLS/'},
+      {label:'Private Party Reel',href:'https://www.instagram.com/reel/DA7pk6gxUtd/'},
+      {label:'Jazz in the Plazz',href:'https://www.instagram.com/reel/C9BveWSRxH3/'}
+    ]
+  },
+  'cats-flyers':{
+    thumb:CDN+'1734f4c6-1a19-4626-856c-e539820cb777_rwc_0x838x3024x2364x3024.jpg?h=294ea121c379a4478d5a0ef7d430ae52',
+    chips:['Social Media','Graphic Design','Canva'],
+    title:'The Cats Restaurant — Social Media Flyers',
+    overview:'Designed a suite of Instagram promotional flyers for The Cats Restaurant using Canva, covering events, seasonal promotions, and special menu features for @thecatslosgatos.',
+    work:'Created visually consistent flyers that matched the restaurant\'s upscale-casual brand identity. Balanced promotional messaging with eye-catching design to drive engagement in the Instagram feed.',
+    results:'Flyers were published as part of a broader campaign strategy that contributed to a 30% increase in audience engagement over six months. Maintained a consistent brand look and feel across all static posts.',
+    links:[]
+  },
+  'cats-email':{
+    thumb:CDN+'8ce46f06-b24b-4e47-96fc-91308026b7c8_rwc_0x361x1558x1218x1558.png?h=994b4c8be7ceb8ede68528b43686eb22',
+    chips:['Email Marketing','SMS Marketing','Mailchimp'],
+    title:'The Cats Restaurant — Email & SMS Marketing',
+    overview:'Managed the full email and SMS marketing program for The Cats Restaurant using Mailchimp, covering newsletter design, copywriting, scheduling, and performance monitoring.',
+    work:'Designed and built email newsletters from scratch in Mailchimp — layout, graphics, copy, and call-to-action buttons. Also ran SMS marketing campaigns targeting opt-in subscribers for time-sensitive promotions and events.',
+    results:'Improved email open rates and click-through rates through better subject line strategy, layout optimization, and audience segmentation. SMS campaigns drove direct foot traffic and event RSVPs.',
+    links:[]
+  },
+  'marketing-plan':{
+    thumb:CDN+'5e53867c-a99c-40b7-99db-10b8af50f4b0_rwc_109x0x863x675x863.jpg?h=57876259460e0b34b554961890341d5c',
+    chips:['Marketing Strategy','Competitive Analysis','Talkwalker','Analytics'],
+    title:'Marketing Plan, Competitive Analysis & Analytics',
+    overview:'Developed a comprehensive marketing strategy package for The Cats Restaurant and led a data-driven social listening project using Talkwalker for my Social Media Analytics class at SJSU.',
+    work:'For The Cats: produced a marketing campaign document targeting new customers and brand awareness, a competitor analysis reviewing rivals\' reviews, social channels, and websites, and a full social media analytics report. For class: used Talkwalker to analyze online conversations around the 2025 Oscars — tracking Top 5 most engaging movies, Top 10 media outlets, common topics, headlines, and negative sentiments.',
+    results:'Delivered actionable strategy documents used by The Cats management team. Talkwalker analysis demonstrated fluency with enterprise-level social listening tools used by major brands and agencies.',
+    links:[
+      {label:'Marketing Campaign Plan',href:'https://docs.google.com/document/d/1owQeKHsSSyoRW2l7qPWkiKgG984duivECZ6SCYHvhAY/edit?usp=sharing'},
+      {label:'Competitor Analysis',href:'https://docs.google.com/document/d/1BHMGpAZFsKU_ptZj2S70viF04FXasGDkRBnFEHbWE_o/edit?usp=sharing'},
+      {label:'Social Media Analytics Report',href:'https://docs.google.com/presentation/d/1NiVbNH5RooX5wujzFogk3ccm8RLIJfhj8glUb7KCmU0/edit?usp=sharing'},
+      {label:'Talkwalker — Oscars Analysis',href:'https://docs.google.com/presentation/d/1q3nPYkWkkn-4QRh8tOJgc_Tpo_DJUSYd11skF4_RPvE/edit?usp=sharing'}
+    ]
+  },
+  'sjsu-team':{
+    thumb:CDN+'8ede191d-e205-49ce-8c52-c472fa609d97_car_202x158.png?h=a0a9bf14a20abc9627a1f9fb4cb5e3be',
+    chips:['Team Lead','Social Media','Multi-Platform','Mailchimp'],
+    title:'SJSU COMM Dept. — Production Creative Team Lead',
+    overview:'Promoted to Production Creative Team Lead for the SJSU Communication Studies Department\'s social media program after serving on the newsletter design team. Led a 12-person team producing content across five platforms.',
+    work:'Managed graphic design, video, podcast, and accessibility consulting teams. Led weekly strategy meetings, aligned production schedules, and ensured brand consistency across Instagram, Facebook, LinkedIn, YouTube, and TikTok. Designed and distributed bi-weekly Mailchimp newsletters for the COMM Events mailing list. Also created a recruitment video in Final Cut Pro to attract new team members.',
+    results:'Oversaw 10+ social media campaigns with timely delivery of all creative assets. The newsletter program consistently exceeded department quality standards. The experience gave me direct team management and cross-functional collaboration skills at scale.',
+    links:[
+      {label:'Recruitment Video (YouTube)',href:'https://www.youtube.com/embed/eirN70WiEHA'}
+    ]
+  },
+  'pr-work':{
+    thumb:CDN+'bf7e6a16-2752-4013-adcd-358bee69f5c8_rwc_211x0x1161x908x1161.png?h=822b93c1bd94b2cb32137e4eed9736f1',
+    chips:['Public Relations','Press Releases','Crisis Comm','Capstone'],
+    title:'Public Relations Coursework & Capstone',
+    overview:'A portfolio of academic PR work demonstrating strategic communication across crisis management, media relations, research, and a full capstone mock PR agency pitch.',
+    work:'Capstone: Acted as a PR agency bidding for a nonprofit client — full pitch including research, strategy, and deliverables. Case studies: crisis communication presentations on the Domino\'s Pizza crisis and NFL/concussions. News releases: wrote professional press releases for Sea Dragon, Brighton University & Life Pros, and Holesome Donut Company. Research: essay examining AI\'s impact on the PR profession.',
+    results:'Comprehensive demonstration of PR fundamentals — from crisis response to media pitching to strategic campaign planning. Certifications in HubSpot Digital Advertising, HubSpot Digital Marketing, Udemy PR Principles, and LinkedIn PR Foundations support the academic work.',
+    links:[
+      {label:'Capstone — Mock PR Agency',href:'https://canva.link/q6fd1p17aj95geq'},
+      {label:'AI in PR — Research Essay',href:'https://docs.google.com/document/d/1bLmo_xkxR9NP-IVT-79mTRklTNnl8FZboGifJqu_1JA/edit?usp=sharing'},
+      {label:"Domino's Crisis Case Study",href:'https://www.canva.com/design/DAGh7ozHbHA/Pds15JecAtiMftX5ssbt1w/edit'},
+      {label:'NFL/Concussions Case Study',href:'https://docs.google.com/presentation/d/10akXIoMqjG3NKjjSDe__-AQCfYxj6gWa5ctn6nGHcCA/edit?usp=sharing'}
+    ]
+  },
+  'gilroy':{
+    thumb:CDN+'642b936e-5a5f-4458-b671-bcdf318dc7b1_rwc_58x0x681x533x681.jpg?h=972e797c9885ea8e07dc33da6d248385',
+    chips:['Social Media','TikTok','Instagram Reels','Sprout Social'],
+    title:'Gilroy Gardens — Social Media',
+    overview:'Summer 2022 social media marketing role at Gilroy Gardens family theme park, creating content for rides, attractions, food, and seasonal events.',
+    work:'Photographed and filmed park content and turned it into Instagram stories, Facebook posts, and TikTok videos. Collaborated with a coworker on a TikTok compilation series highlighting park attractions. Scheduled all posts using Sprout Social to maximize reach for family-focused seasonal event promotions.',
+    results:'Increased seasonal campaign reach on TikTok, Instagram Reels, and Facebook, contributing to higher event attendance and visitor numbers during the peak summer season.',
+    links:[
+      {label:'Gilroy Gardens TikTok Compilation',href:'https://www.youtube.com/embed/KzgWaxwZ2VQ'}
+    ]
+  },
+  'church':{
+    thumb:CDN+'f5d7c6b3-b440-4cbc-a3e0-3bd0617a489d_rwc_150x0x1745x1365x1745.jpg?h=3e95f7411db45303b64a18663ca4d1a6',
+    chips:['Social Media','Built from Zero','Canva','Volunteer'],
+    title:'Orchard Valley Christian Church — Instagram',
+    overview:'Volunteered to create and launch the social media presence for Orchard Valley Christian Church, which had no Instagram account before this project.',
+    work:'Helped establish the church\'s Instagram channel from scratch. Designed all flyers in Canva using a cohesive visual identity that reflected the church\'s community and values. Set up and managed the account @orchardvalleychurch.',
+    results:'Successfully launched and grew a new social media channel from zero audience, creating a consistent and welcoming visual brand for the congregation — demonstrating initiative, community engagement, and the ability to build something from nothing.',
+    links:[]
+  }
+};
+
+function openModal(id){
+  const m=modals[id]; if(!m) return;
+  document.getElementById('modal-thumb').src=m.thumb;
+  document.getElementById('modal-chips').innerHTML=m.chips.map(c=>`<span class="chip chip-navy">${c}</span>`).join('');
+  document.getElementById('modal-title').textContent=m.title;
+  document.getElementById('modal-overview').textContent=m.overview;
+  document.getElementById('modal-work').textContent=m.work;
+  document.getElementById('modal-results').textContent=m.results;
+  const lEl=document.getElementById('modal-links');
+  lEl.innerHTML=m.links.map(l=>
+    `<a href="${l.href}" target="_blank" class="modal-link-btn">↗ ${l.label}</a>`
+  ).join('');
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){
+  if(e&&e.target!==document.getElementById('modal-overlay')&&!e.target.classList.contains('modal-close'))return;
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('modal-overlay').classList.remove('open');document.body.style.overflow='';}});
+</script>
+</body>
+</html>
